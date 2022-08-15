@@ -205,6 +205,7 @@
                     if (initial) {
                       _this.holding[name] += options.buttonInitialTimeout - options.buttonRepeatTimeout;
                     }
+                    event.callback.call();
                   }
                 }
               } else if (!button.pressed && typeof _this.holding[name] !== 'undefined') {
