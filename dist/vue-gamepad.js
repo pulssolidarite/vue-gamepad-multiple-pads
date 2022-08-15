@@ -191,7 +191,6 @@
         key: "run",
         value: function run() {
           var _this = this;
-          console.log(this.getGamepads());
           this.getGamepads().forEach(function (pad) {
             pad.buttons.forEach(function (button, index) {
               var name = options.buttonNames[index];
@@ -206,7 +205,6 @@
                     if (initial) {
                       _this.holding[name] += options.buttonInitialTimeout - options.buttonRepeatTimeout;
                     }
-                    event.callback.call();
                   }
                 }
               } else if (!button.pressed && typeof _this.holding[name] !== 'undefined') {
