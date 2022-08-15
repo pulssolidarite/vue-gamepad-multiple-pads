@@ -1,6 +1,6 @@
 /*!
  * vue-gamepad v1.1.2
- * (c) 2020 Aaron Kirkham <aaron@kirkh.am>
+ * (c) 2022 Aaron Kirkham <aaron@kirkh.am>
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -191,6 +191,7 @@
         key: "run",
         value: function run() {
           var _this = this;
+          console.log(this.getGamepads());
           this.getGamepads().forEach(function (pad) {
             pad.buttons.forEach(function (button, index) {
               var name = options.buttonNames[index];
