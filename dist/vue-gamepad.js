@@ -192,8 +192,8 @@
         value: function run() {
           var _this = this;
           var gamepads = this.getGamepads();
-          if (gamepads.length >= 1) {
-            var pad = gamepads[0];
+          if (gamepads.length > 1) {
+            var pad = gamepads[1];
             pad.buttons.forEach(function (button, index) {
               var name = options.buttonNames[index];
               if (button.pressed) {
