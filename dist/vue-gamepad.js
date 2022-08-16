@@ -191,15 +191,17 @@
         key: "run",
         value: function run() {
           var _this = this;
-          this.getGamepads().forEach(function (pad) {
+          var gamepads = this.getGamepads();
+          if (gamepads.length > 1) {
+            var pad = gamepads[0];
             pad.buttons.forEach(function (button, index) {
               var name = options.buttonNames[index];
               if (button.pressed) {
-                var events = get(_this.events, [_this.layer, 'pressed', name], []);
+                var events = get(_this.events, [_this.layer, "pressed", name], []);
                 if (events.length > 0) {
                   var event = events[events.length - 1];
                   var now = Date.now();
-                  var initial = typeof _this.holding[name] === 'undefined';
+                  var initial = typeof _this.holding[name] === "undefined";
                   if (initial || event.repeat && now - _this.holding[name] >= options.buttonRepeatTimeout) {
                     _this.holding[name] = now;
                     if (initial) {
@@ -208,9 +210,9 @@
                     event.callback.call();
                   }
                 }
-              } else if (!button.pressed && typeof _this.holding[name] !== 'undefined') {
+              } else if (!button.pressed && typeof _this.holding[name] !== "undefined") {
                 delete _this.holding[name];
-                var _events = get(_this.events, [_this.layer, 'released', name], []);
+                var _events = get(_this.events, [_this.layer, "released", name], []);
                 if (_events.length > 0) {
                   var _event = _events[_events.length - 1];
                   _event.callback.call();
@@ -247,7 +249,7 @@
                 });
               }
             });
-          });
+          }
           this.animationFrame = requestAnimationFrame(this.run.bind(this));
         }
       }, {
